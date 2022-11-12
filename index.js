@@ -12,18 +12,24 @@ let dataIndex = lis.length;
 //getting userInput
 userInput.addEventListener("submit", (e) => {
   e.preventDefault();
-
   let input = e.target[0].value;
-  input && createElement(input);
+
+  if (!input) {
+    alert("You need to typea todo!");
+  } else {
+    createElement(input);
+  }
 
   e.target[0].value = "";
 });
-
 
 //event listeners for drag events
 container.addEventListener("dragstart", dragStart);
 container.addEventListener("drop", dragDrop);
 container.addEventListener("dragover", dragOver);
+
+container.addEventListener('touchmove', dragStart, {passive: true});
+container.addEventListener('touchend', dragDrop, {passive: true});
 
 //functions that execute for dragging events
 function dragStart(e) {
