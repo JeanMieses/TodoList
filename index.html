@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -11,25 +17,38 @@
     <h1>todo</h1>
     <main>
       <form id="userInput">
-        <input name='query' type="text" />
+        <input placeholder="Create a new todo" name="query" type="text" />
       </form>
 
       <ul id="container">
         <li data-index="0">
+          <input name="todos" type="radio" />
           <p class="draggable" draggable="true">Pick groceries</p>
         </li>
         <li data-index="1">
+          <input name="todos" type="radio" />
           <p class="draggable" draggable="true">Bath the dog</p>
         </li>
-        <li data-index="2"><p class="draggable" draggable="true">Invest</p></li>
+        <li data-index="2">
+          <input name="todos" type="radio" />
+          <p class="draggable" draggable="true">Invest</p>
+        </li>
         <li data-index="3">
+          <input name="todos" type="radio" />
           <p class="draggable" draggable="true">Get a girlfriend</p>
         </li>
         <li data-index="4">
+          <input name="todos" type="radio" />
           <p class="draggable" draggable="true">Stay positive</p>
         </li>
       </ul>
     </main>
+    <!-- <div>
+      <span class="todosCounter"></span>
+      <button class="allBtn">all</button>
+      <button class="activeBtn">active</button>
+      <button class="completeBtn">complete</button>
+    </div> -->
 
     <script src="index.js"></script>
   </body>

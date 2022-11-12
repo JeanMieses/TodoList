@@ -2,23 +2,30 @@ const draggables = document.querySelectorAll(".draggable");
 const lis = document.querySelectorAll("li");
 const container = document.querySelector("#container");
 const userInput = document.querySelector("#userInput");
+const completeBtn = document.querySelector(".completeBtn");
+const allBtn = document.querySelector(".allBtn");
+const activeBtn = document.querySelector(".activeBtn");
+
 let draggingElementIndex = null;
 let dataIndex = lis.length;
 
 //getting userInput
 userInput.addEventListener("submit", (e) => {
   e.preventDefault();
+
   let input = e.target[0].value;
-  createElement(input);
+  input && createElement(input);
+
   e.target[0].value = "";
 });
 
-//events listeners for drag events
+
+//event listeners for drag events
 container.addEventListener("dragstart", dragStart);
 container.addEventListener("drop", dragDrop);
 container.addEventListener("dragover", dragOver);
 
-//functions that execute for a given event
+//functions that execute for dragging events
 function dragStart(e) {
   if (e.target.nodeName === "P") {
     draggingElementIndex = +e.target.closest("li").getAttribute("data-index");
@@ -46,13 +53,19 @@ function switchElements(from, to) {
 }
 
 //create a DOM element
-function createElement(input) {
+function createElement(userInput) {
   const li = document.createElement("li");
   const p = document.createElement("p");
+  const input = document.createElement("input");
+
+  input.name = "todos";
+  input.type = "radio";
   p.draggable = true;
   p.classList.add("draggable");
   li.setAttribute("data-index", dataIndex++);
-  p.append(input);
+
+  p.append(userInput);
+  li.append(input);
   li.append(p);
   container.append(li);
 }
