@@ -18,8 +18,11 @@ userInput.addEventListener("submit", (e) => {
   e.preventDefault();
   let input = e.target[0].value;
 
-  if (!input) alert("You need to typea todo!");
-  createElement(input);
+  if (!input) {
+    alert("You need to typea todo!");
+  } else {
+    createElement(input);
+  }
   e.target[0].value = "";
   todosLeft++;
   todosLeftText.innerText = todosLeft;
@@ -75,17 +78,17 @@ function createElement(userInput) {
   p.classList.add("draggable");
   li.setAttribute("data-index", dataIndex++);
   button.classList.add("remove");
-  button.append("X");
+  button.append("x");
   p.append(userInput);
+  p.append(button);
   li.append(input);
   li.append(p);
-  li.append(button);
   container.append(li);
 }
 
 function removeElementF(e) {
   if (e.target.classList.contains("remove")) {
-    e.target.parentNode.remove();
+    e.target.parentNode.parentNode.remove();
     todosLeft--;
     todosLeftText.innerText = todosLeft;
   }
