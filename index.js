@@ -5,9 +5,12 @@ const userInput = document.querySelector("#userInput");
 const completeBtn = document.querySelector(".completeBtn");
 const allBtn = document.querySelector(".allBtn");
 const activeBtn = document.querySelector(".activeBtn");
+const todosLeftText = document.querySelector(".left");
 
 let draggingElementIndex = null;
 let dataIndex = lis.length;
+let todosLeft = lis.length;
+todosLeftText.innerText = todosLeft;
 
 //getting userInput
 userInput.addEventListener("submit", (e) => {
@@ -21,15 +24,15 @@ userInput.addEventListener("submit", (e) => {
   }
 
   e.target[0].value = "";
+  todosLeft++;
+  todosLeftText.innerText = todosLeft;
+  
 });
 
 //event listeners for drag events
 container.addEventListener("dragstart", dragStart);
 container.addEventListener("drop", dragDrop);
 container.addEventListener("dragover", dragOver);
-
-container.addEventListener('touchmove', dragStart, {passive: true});
-container.addEventListener('touchend', dragDrop, {passive: true});
 
 //functions that execute for dragging events
 function dragStart(e) {

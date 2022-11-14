@@ -3,7 +3,10 @@
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,12 +14,13 @@
     <title>Frontend Mentor | Todo app</title>
   </head>
   <body>
-    <h1>todo</h1>
+    <div class="backgroundimg"></div>
     <main>
+      <h1>todo</h1>
       <form id="userInput">
         <input placeholder="Create a new todo" name="query" type="text" />
       </form>
-
+      
       <ul id="container">
         <li data-index="0">
           <input name="todos" type="radio" />
@@ -39,11 +43,17 @@
           <p class="draggable" draggable="true">Stay positive</p>
         </li>
       </ul>
-      <div>
+
+      <div class="todosLeft">
+        <p><span class="left">0</span> items left</p>
+        <button>Clear Completed</button>
+      </div>
+
+      <div class="lists">
         <span class="todosCounter"></span>
         <button class="allBtn">all</button>
         <button class="activeBtn">active</button>
-        <button class="completeBtn">complete</button>
+        <button class="completeBtn">completed</button>
       </div>
     </main>
 

@@ -1,29 +1,53 @@
+html {
+  padding: 0;
+}
+
 body {
+  position: relative;
+  background-color: hsl(235, 21%, 11%);
+  font-family: "Josefin Sans", sans-serif;
+  box-sizing: border-box;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.backgroundimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 30vh;
   background: url("../images/bg-mobile-dark.jpg");
   background-repeat: no-repeat;
   background-size: 50vh;
   background-position: top;
-  background-color: hsl(235, 21%, 11%);
-  font-family: "Josefin Sans", sans-serif;
+  background-size: cover;
+  margin: 0;
+  z-index: -1;
+
 }
 
 h1 {
   color: #fff;
   text-transform: uppercase;
-  margin: 2em 1em;
-  margin-bottom: 1em;
+  margin: 1.5em 0.6em;
+  margin: 0;
+  margin-bottom: 0.5em;
   letter-spacing: 0.25em;
+
 }
 
 main {
-  /* border: 2px solid white; */
   width: 92%;
   margin: 0 auto;
+  position: relative;
+  top:3em;
 }
 
 #userInput {
   width: 100%;
-  height: 45px;
 }
 
 #userInput input {
@@ -31,13 +55,14 @@ main {
   color: #fff;
   border: none;
   width: 100%;
-  height: 45px;
-  border-radius: 10px;
+  height: 55px;
+  border-radius: 0.7em;
 }
 
 input::placeholder {
   color: hsl(234, 11%, 52%);
   text-align: center;
+  text-transform: uppercase;
 }
 
 #container {
@@ -47,11 +72,12 @@ input::placeholder {
   flex-direction: column;
   align-items: center;
   padding: 0;
-  box-shadow: 0px 15px 8px rgb(14, 14, 14);
+  box-shadow: 0px 15px 10px rgb(14, 14, 14);
+  margin-bottom: 0;
 }
 
 #container li {
-  width: 90%;
+  width: 100%;
   border-bottom: 1px solid hsl(233, 14%, 35%);
   list-style-type: none;
   margin: 0.7em 0;
@@ -59,17 +85,58 @@ input::placeholder {
   flex-direction: row;
 }
 
-#container li input[type='radio'] {
-    margin-right: 0.8em;
-    /* background-color: red */
-    
-} 
-
-#container li p {
-    color: hsl(234, 11%, 52%);
-    font-weight: lighter;
-    font-size: 1.1em;
-    text-transform: capitalize;
+#container li input[type="radio"] {
+  margin: 0 1.5em;
 }
 
+#container li p {
+  width: 90%;
+  color: hsl(234, 11%, 52%);
+  font-weight: lighter;
+  font-size: 1em;
+  text-transform: capitalize;
+}
 
+.todosLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: hsl(235, 24%, 19%);
+  margin: 0;
+}
+
+.todosLeft button {
+  opacity: 0.5;
+  color: hsl(234, 11%, 52%);
+  background-color: inherit;
+  border: none;
+  padding: 1em 0;
+}
+
+.todosLeft P {
+  opacity: 0.5;
+  margin: 0;
+  padding: 1em 0;
+  color: hsl(234, 11%, 52%);
+}
+
+.lists {
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.7em;
+  border-radius: 0.5em;
+  box-shadow: 0px 15px 8px rgb(14, 14, 14);
+  margin-bottom: 5em;
+}
+
+.lists button {
+  border: none;
+  background-color: inherit;
+  color: hsl(234, 11%, 52%);
+  margin: 1em;
+  text-transform: capitalize;
+}
