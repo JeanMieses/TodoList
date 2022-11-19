@@ -235,12 +235,12 @@ input::placeholder {
 
 @media (min-width: 1468px) {
   main {
-    width: 34%;
+    width: 40%;
   }
 }
 
 @media (min-width: 2063px) {
   main {
-    width: 24%;
+    width: 35%;
   }
 }

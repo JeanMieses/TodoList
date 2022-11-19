@@ -7,6 +7,7 @@ const removeElement = document.querySelector(".remove");
 const completeBtn = document.querySelector(".completeBtn");
 const activeBtn = document.querySelector(".activeBtn");
 const allBtn = document.querySelector(".allBtn");
+const clearCompletes = document.querySelector(".clearCompletes");
 
 let draggingElementIndex = null;
 let dataIndex = lis.length;
@@ -28,25 +29,26 @@ userInput.addEventListener("submit", (e) => {
   todosLeftText.innerText = todosLeft;
 });
 
-//event listeners for drag events
+//event listeners for events
 container.addEventListener("dragstart", dragStart);
 container.addEventListener("drop", dragDrop);
 container.addEventListener("dragover", dragOver);
 container.addEventListener("click", removeElementF);
 container.addEventListener("click", markComplete);
 completeBtn.addEventListener("click", showCompletedTodos);
-activeBtn.addEventListener("click", activeTodos);
+activeBtn.addEventListener("click", showActiveTodos);
 allBtn.addEventListener("click", showAllTodos);
+clearCompletes.addEventListener("click", clearCompletedTodos);
 
 //functions that execute for dragging events
 function dragStart(e) {
-  if (e.target.nodeName === "P") {
+  if (e.target.classList.contains("draggable")) {
     draggingElementIndex = +e.target.closest("li").getAttribute("data-index");
   }
 }
 
 function dragDrop(e) {
-  if (e.target.nodeName === "P") {
+  if (e.target.classList.contains("draggable")) {
     let dropPosition = +e.target.closest("li").getAttribute("data-index");
     switchElements(draggingElementIndex, dropPosition);
   }
@@ -85,9 +87,9 @@ function markComplete(e) {
 }
 
 function showCompletedTodos() {
-  this.style.color='hsl(220, 98%, 61%)';
-  activeBtn.style.color='hsl(234, 11%, 52%)';
-  allBtn.style.color='hsl(234, 11%, 52%)';
+  this.style.color = "hsl(220, 98%, 61%)";
+  activeBtn.style.color = "hsl(234, 11%, 52%)";
+  allBtn.style.color = "hsl(234, 11%, 52%)";
   for (let li of container.children) {
     if (!li.classList.contains("done")) {
       li.classList.add("hide");
@@ -98,10 +100,10 @@ function showCompletedTodos() {
   }
 }
 
-function activeTodos() {
-  this.style.color='hsl(220, 98%, 61%)';
-  completeBtn.style.color='hsl(234, 11%, 52%)';
-  allBtn.style.color='hsl(234, 11%, 52%)';
+function showActiveTodos() {
+  this.style.color = "hsl(220, 98%, 61%)";
+  completeBtn.style.color = "hsl(234, 11%, 52%)";
+  allBtn.style.color = "hsl(234, 11%, 52%)";
   for (let li of container.children) {
     if (li.classList.contains("done")) {
       li.classList.add("hide");
@@ -114,11 +116,22 @@ function activeTodos() {
 }
 
 function showAllTodos() {
-  this.style.color='hsl(220, 98%, 61%)';
-  activeBtn.style.color='hsl(234, 11%, 52%)';
-  completeBtn.style.color='hsl(234, 11%, 52%)';
+  this.style.color = "hsl(220, 98%, 61%)";
+  activeBtn.style.color = "hsl(234, 11%, 52%)";
+  completeBtn.style.color = "hsl(234, 11%, 52%)";
   for (let li of container.children) {
     li.classList.remove("hide");
+  }
+}
+
+function clearCompletedTodos() {
+  const completedTodos = document.querySelectorAll(".done");
+  if (!completedTodos) return;
+
+  for (let todo of completedTodos) {
+    todo.remove();
+    todosLeft--;
+    todosLeftText.innerText = todosLeft;
   }
 }
 
